@@ -21,7 +21,7 @@ class FocusableInput extends React.Component {
   ref = React.createRef();
 
   render() {
-    return <TextInput autofocus={this.props.focused} ref={this.ref} />;
+    return <TextInput ref={this.ref} />;
   }
 
   // When the focused prop is changed from false to true,
@@ -29,7 +29,7 @@ class FocusableInput extends React.Component {
   // If focused prop is true, the input should receive the focus.
   // Implement your solution below:
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.focused && this.props.focused) {
+    if (!prevProps.focused && this.props.focused) {
       this.ref.current.focus();
     }
   }
